@@ -76,7 +76,7 @@ $ cd linux-<kernel-version>
 > ```
 > and add ``` "initramfs.img" \```
 
-13. reboot to new kernel
-``` $ sudo reboot ```
+13. reboot to new kernel  
+``` $ sudo reboot ```  
 While its rebooting after the bios press esc to get to the grub menu. In the grub menu select "advanced options for manjaro linux" and you should see the kernel that compiled. select it and you shoud be good to go
  
