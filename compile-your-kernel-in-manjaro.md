@@ -24,9 +24,8 @@ $ cd linux-<kernel-version>
 ```
 6. Configuring the new kernel, there are three ways to go about this.
     1. Copy the running config. 
-  ``` $ zcat /proc/config.gz > .config ```
-> If there are options in the new kernel that dont exist in the one currently running make will prompt you for each one. To avoid this open a configurator afterwards and it will set all the options to default.  
-
+    ``` $ zcat /proc/config.gz > .config ```
+    > If there are options in the new kernel that dont exist in the one currently running make will prompt you for each one. To avoid this open a configurator      afterwards and it will set all the options to default.  
     2. you can configure it manually.   
     use ``` $ make menuconfig ``` for this.
     or use ``` $ make xconfig ``` and that would provide a gui.  
