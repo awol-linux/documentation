@@ -11,7 +11,7 @@
 
 3. Download the source tarball [the linux kernel site](https://www.kernel.org).
 
-> do not use sudo at this point
+> Do not use sudo at this point
 4. Create a work directory.
 ```
 $ mkdir src
