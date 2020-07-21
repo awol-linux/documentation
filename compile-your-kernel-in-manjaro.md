@@ -3,3 +3,5 @@
 the first step is to update your system i was using manjaro linux the way to do that on manjaro is 
 
 ``` sudo pacman -Syu ```
+
+the next thing is to grab the source tarball you can get from git or [the linux kernel site} (https://www.kernel.org)
