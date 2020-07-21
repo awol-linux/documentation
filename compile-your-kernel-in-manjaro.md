@@ -1,4 +1,4 @@
-# How to Compile Your Kernel in Manjaro
+# How to Compile the Linux Kernel in Manjaro
 ## Documentation for the video I posted on youtube discussing how to compile the linux kernel on Manjaro Linux.
 ### https://youtu.be/_e4VBLoYy8w
 1. Update the system And Install the Base-devel package group.
