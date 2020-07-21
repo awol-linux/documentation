@@ -61,7 +61,7 @@ $ cd linux-<kernel-version>
 > ``` for i in /boot/vmlinuz-* /boot/vmlinux-* /vmlinuz-* /vmlinux-* /boot/kernel-* ; do ```  
 > Take off the dash after /boot/vmlinuz
 > 
-> The same issue applies to the initramfs.In order to change that add ``` "initramfs.img" \> ```
+> The same issue applies to the initramfs.In order to change that add the line ``` "initramfs.img" \ ```
 > to the pargraph
 > ``` for i in "initrd.img-${version}" "initrd-${version}.img" "initrd-${version}.gz" \
 >           "initrd-${version}" "initramfs-${version}.img" \
