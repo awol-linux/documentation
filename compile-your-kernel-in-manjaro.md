@@ -28,10 +28,10 @@ $ cd linux-<kernel-version>
 > If there are options in the new kernel that dont exist in the one currently running make will prompt you for each one. To avoid this open a configurator afterwards and it will set all the options to default.  
 
     2. you can configure it manually.   
-    use ``` $ make menuconfig``` for this.
-    or use ``` $ make xconfig``` and that would provide a gui.  
+    use ``` $ make menuconfig ``` for this.
+    or use ``` $ make xconfig ``` and that would provide a gui.  
     3. install only running modules.
-    ``` $ make localmodconfig```
+    ``` $ make localmodconfig ```
     
 7. time to compile.  
 ``` $ make -j9```
