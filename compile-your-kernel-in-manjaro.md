@@ -52,7 +52,7 @@ $ cd linux-<kernel-version>
 
 12. Remake the grub config file
 ``` $ sudo grub-mkconfig -o /boot/grub/grub.cfg```
-> On fedora you would Use ```grub2-mkconfig``` and the grub config location is /boot/efi/EFI/fedora/grub.cfg. In order to locate the grub conig file use  
+> On fedora you would Use ```grub2-mkconfig``` and the grub config location is /boot/efi/EFI/fedora/grub.cfg. In order to locate the grub config file use  
 > ```sudo find / -name grub.cfg``` .
 
 > Sometimes the grub-mkconfig doesn't look for kernels that dont have a version appended to the name. To change that edit the script /etc/grub.d/10_linux. 
