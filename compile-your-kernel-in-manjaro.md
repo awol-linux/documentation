@@ -55,13 +55,14 @@ $ cd linux-<kernel-version>
 > On fedora you would Use ```grub2-mkconfig``` and the grub config location is /boot/efi/EFI/fedora/grub.cfg. In order to locate the grub conig file use  
 > ```sudo find / -name grub.cfg``` .
 
-> On majaro the grub-mkconfig doesn't look for kernels that dont have a version appended to the name. if you want you can change that in the files /etc/grub.d/10_linux
-> on the lines  
-> ``` for i in /boot/vmlinuz-* /vmlinuz-* /boot/kernel-* ; do ```  
-> ``` for i in /boot/vmlinuz-* /boot/vmlinux-* /vmlinuz-* /vmlinux-* /boot/kernel-* ; do ```  
-> Take off the dash after /boot/vmlinuz
+> Sometimes the grub-mkconfig doesn't look for kernels that dont have a version appended to the name. To change that edit the script /etc/grub.d/10_linux. 
+> Change the line
+> ``` for i in /boot/vmlinuz-* /vmlinuz-* /boot/kernel-* ; do ``` into  
+> ``` for i in /boot/vmlinuz* /vmlinuz* /boot/kernel* ; do ```  
+> and change
+> ``` for i in /boot/vmlinuz-* /boot/vmlinux-* /vmlinuz-* /vmlinux-* /boot/kernel-* ; do ``` into  ``` for i in /boot/vmlinuz* /boot/vmlinux* /vmlinuz* /vmlinux* /boot/kernel* ; do ``` 
 > 
-> The same issue applies to the initramfs.In order to change that add the line ``` "initramfs.img" \ ```
+> The same issue applies to the initramfs Add the line ``` "initramfs.img" \ ```
 > to the pargraph
 > ``` for i in "initrd.img-${version}" "initrd-${version}.img" "initrd-${version}.gz" \
 >           "initrd-${version}" "initramfs-${version}.img" \
