@@ -9,7 +9,7 @@
 
 ``` $ uname -r ```
 
-3. Download the source tarball [the linux kernel site](https://www.kernel.org).
+3. Download the source tarball from [the linux kernel site](https://www.kernel.org).
 
 > Do not use sudo at this point
 4. Create a work directory.
@@ -26,7 +26,7 @@ $ cd linux-<kernel-version>
     1. Copy the running config. 
     ``` $ zcat /proc/config.gz > .config ```
     > If there are options in the new kernel that dont exist in the one currently running make will prompt you for each one. To avoid this open a configurator      afterwards and it will set all the options to default.  
-    2. you can configure it manually.   
+    2. Configure the kernel manually.   
         * TUI ``` $ make menuconfig ``` .
         * GUI ``` $ make xconfig ``` .  
     3. Compile with only current running modules.
@@ -39,14 +39,14 @@ $ cd linux-<kernel-version>
 8. Compile the modules  
 ``` $ make modules -j9```
 
-
 > From here out you do want to use sudo or be root 
+
 9. Install the modules  
 ``` $ sudo make modules_install -j9 ```  
 
 10. Install the kernel
 ``` $ sudo make install```
-> If there is a erro
+> Do not worry about the error ``` Cannot find LILO. ``` unless LILO is the system bootloader
 
 > Optional rename the kernel file to include the version ```$ sudo mv /boot/vmlinuz /boot/vmlinuz-<kernel-version>``` 
 11. Build a initrd image  
