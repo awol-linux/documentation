@@ -212,21 +212,106 @@ verify the partition table using `lsblk`
 `arch-chroot /mnt`
 
 15. set time
-`tzselect`
-timedatectl set-timezone America/New_York
-hwclock --systohc
+> If you are unsure of which timezone you should use then `tzselect` can help.
 
-16 set locale
+	timedatectl set-timezone America/New_York
+	hwclock --systohc
 
-`vim /etc/locale.gen`
+16. set locale
 
-`locale-gen`
+	1.  edit the locale config file.
+		`vim /etc/locale.gen`
 
-systemctl enable NetworkManager
-vim /etc/mkinitcpio.conf
-passwd
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
-grub-mkconfig -o /boot/grub/grub.cfg
-exit
-reboot
+	1. Uncomment the locales that you plan to use for american english uncomment the following lines.
+
+		```
+		#  en_US ISO-8859-1  
+		#  en_US.UTF-8 UTF-8
+		```
+		
+	2. Generate the locale.  
+		`locale-gen`
+		
+		Generating locales...
+  		en_US.ISO-8859-1... done
+  		en_US.UTF-8... done	
+		Generation complete.
+
+17. enable networking
+
+		systemctl enable NetworkManager
+
+		Created symlink /etc/systemd/system/multi-user.target.wants/NetworkManager.service → /usr/lib/systemd/system/NetworkManager.service.
+		Created symlink /etc/systemd/system/dbus-org.freedesktop.nm-dispatcher.service → /usr/lib/systemd/system/NetworkManager-dispatcher.service.
+		Created symlink /etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service → /usr/lib/systemd/system/NetworkManager-wait-online.service.
+
+
+18. create initrd image
+	
+	1.edit mkinitcpio config file
+	
+	`vim /etc/mkinitcpio.conf`
+	
+	2. add lvm2 to the following line in between block and filesystems
+	
+		HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
+
+	  so that it looks like 
+
+		HOOKS=(base udev autodetect modconf block lvm2 filesystems keyboard fsck)
+	
+	3. create image
+	
+	`mkinitcpio -P`
+	
+		==> Building image from preset: /etc/mkinitcpio.d/linux.preset: 'default'
+  		  -> -k /boot/vmlinuz-linux -c /etc/mkinitcpio.conf -g /boot/initramfs-linux.img
+		==> Starting build: 5.8.3-arch1-1
+		  -> Running build hook: [base]
+		  -> Running build hook: [udev]
+		  -> Running build hook: [autodetect]
+		  -> Running build hook: [modconf]
+		  -> Running build hook: [block]
+		==> WARNING: Possibly missing firmware for module: xhci_pci
+		  -> Running build hook: [lvm2]
+		  -> Running build hook: [filesystems]
+		  -> Running build hook: [keyboard]
+		  -> Running build hook: [fsck]
+		==> Generating module dependencies
+		==> Creating gzip-compressed initcpio image: /boot/initramfs-linux.img
+		==> Image generation successful
+		==> Building image from preset: /etc/mkinitcpio.d/linux.preset: 'fallback'
+		  -> -k /boot/vmlinuz-linux -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-fallback.img -S autodetect
+		==> Starting build: 5.8.3-arch1-1
+		  -> Running build hook: [base]
+		  -> Running build hook: [udev]
+		  -> Running build hook: [modconf]
+		  -> Running build hook: [block]
+		==> WARNING: Possibly missing firmware for module: aic94xx
+		==> WARNING: Possibly missing firmware for module: wd719x
+		==> WARNING: Possibly missing firmware for module: xhci_pci
+		  -> Running build hook: [lvm2]
+		  -> Running build hook: [filesystems]
+		  -> Running build hook: [keyboard]
+		  -> Running build hook: [fsck]
+		==> Generating module dependencies
+		==> Creating gzip-compressed initcpio image: /boot/initramfs-linux-fallback.img
+		==> Image generation successful
+19. set root password 
+`passwd`
+
+20. install grub
+
+	1. install grub to EFI System partition
+		
+		grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux
+
+	2. Create config file
+
+		grub-mkconfig -o /boot/grub/grub.cfg
+
+21. reboot system
+		
+		exit
+		reboot
                                                                                                  57,1          Bo
