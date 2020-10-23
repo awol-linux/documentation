@@ -1,5 +1,7 @@
 1. get media
 
+download from https://www.archlinux.org/download/
+
 2. link keyboard
 to find layouts type  
 `find /usr/share -name \.map.gz -print`  
