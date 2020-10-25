@@ -4,7 +4,7 @@ download from https://www.archlinux.org/download/
 
 2. link keyboard
 to find layouts type  
-`find /usr/share -name \.map.gz -print`  
+`find /usr/share -name \*.map.gz -print`  
 `loadkeys <layout>`
 > When using loadkeys skip path and extension
 
