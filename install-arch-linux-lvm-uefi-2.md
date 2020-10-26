@@ -20,18 +20,18 @@
     `su - user`
 
 5. Install aur  
-    a. copy the source the code into the current directory
+    a. copy the source the code into the current directory  
     `git clone https://aur.archlinux.org/yay-git.git`  
-    b. cd into the build directory
+    b. cd into the build directory  
     `cd yay-git`  
-    c. build the package
+    c. build the package  
     `makepkg -si`  
 
 6. Install and enable firewall  
-    a. install the firewall
-    `pacman -S firewalld`  
-    b. enable and start the firewall
-    `systemctl enable firewalld --now`  
+    a. install the firewall  
+    `pacman -S firewalld`   
+    b. enable and start the firewall   
+    `systemctl enable firewalld --now`   
 
 7. Install ssh server  
     a. install the ssh server  
@@ -44,17 +44,20 @@
 Press enter to select all  
 
 9. Install lightdm (login manager)  
-`pacman -S lightdm`  
-`systemctl enable lightdm`  
+    a. install login manager  
+   `pacman -S lightdm`  
+    b. enable login manager  
+    `systemctl enable lightdm`  
 
 10. Set default to boot to graphical mode  
 `systemctl set-default graphical.target`  
 
-11. Install xfce4
-
-`pacman -S xfce4`  
-`pacman -S xfce4-goodies` #(extra programs)
+11. Install desktop enviroment  
+    a. install xfce4
+    `pacman -S xfce4`  
+    b. install addons (optional)
+    `pacman -S xfce4-goodies` #(extra programs)
 
 12. Install flatpak  
-`pacman -S flatpak`
+    `pacman -S flatpak`
 
