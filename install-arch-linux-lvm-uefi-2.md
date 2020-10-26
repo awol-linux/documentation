@@ -40,17 +40,17 @@
     `systemctl enable sshd --now`  
 
 8. Install X11  
-`pacman -S xorg`  
-Press enter to select all  
+    `pacman -S xorg`  
+    Press enter to select all  
 
 9. Install lightdm (login manager)  
     a. install login manager  
-   `pacman -S lightdm`  
+    `pacman -S lightdm`  
     b. enable login manager  
     `systemctl enable lightdm`  
 
 10. Set default to boot to graphical mode  
-`systemctl set-default graphical.target`  
+    `systemctl set-default graphical.target`  
 
 11. Install desktop enviroment  
     a. install xfce4  
