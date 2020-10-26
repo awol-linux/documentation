@@ -53,10 +53,10 @@ Press enter to select all
 `systemctl set-default graphical.target`  
 
 11. Install desktop enviroment  
-    a. install xfce4
+    a. install xfce4  
     `pacman -S xfce4`  
-    b. install addons (optional)
-    `pacman -S xfce4-goodies` #(extra programs)
+    b. install addons (optional)  
+    `pacman -S xfce4-goodies`
 
 12. Install flatpak  
     `pacman -S flatpak`
