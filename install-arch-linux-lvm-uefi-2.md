@@ -1,42 +1,60 @@
-Update system  
-`pacman -Syu`  
+1. Update system first not srictly necessarily but always a good idea.  
+    `pacman -Syu`
 
-Add sudo user  
-`useradd -m user -aG wheel`  
-`passwd user`
+2. Add a user on the machine and give it sudo privlidge.  
+    a. add a new user named user  
+    `useradd -m user -aG wheel`  
+    b. set the password for the user  
+    `passwd user`  
 
-Become user  
-`su - user`
+3. In order to avoid needing to enter a password change the following line in visudo  
+    a. set vim as editor  
+    `export editor=vim`  
+    b. make sure the following line is commented  
+    `%wheel ALL=(ALL) ALL`  
+    c. and uncomment the following line  
+    `%wheel ALL=(ALL) NOPASSWD: ALL`  
 
-Install aur  
-`git clone https://aur.archlinux.org/yay-git.git`  
-`cd yay-git`  
-`makepkg -si`  
 
-Install and enable firewall  
-`pacman -S firewalld`  
-`systemctl enable firewalld --now`  
+4. In order to use the aur packages need to be compiled  you need to become a user  
+    `su - user`
 
-Install ssh server  
-`pacman -S openssh`  
-`systemctl enable sshd --now`  
+5. Install aur  
+    a. copy the source the code into the current directory
+    `git clone https://aur.archlinux.org/yay-git.git`  
+    b. cd into the build directory
+    `cd yay-git`  
+    c. build the package
+    `makepkg -si`  
 
-Install X11  
+6. Install and enable firewall  
+    a. install the firewall
+    `pacman -S firewalld`  
+    b. enable and start the firewall
+    `systemctl enable firewalld --now`  
+
+7. Install ssh server  
+    a. install the ssh server  
+    `pacman -S openssh`  
+    b. start the ssh server  
+    `systemctl enable sshd --now`  
+
+8. Install X11  
 `pacman -S xorg`  
 Press enter to select all  
 
-Install lightdm (login manager)  
+9. Install lightdm (login manager)  
 `pacman -S lightdm`  
 `systemctl enable lightdm`  
 
-Set default to boot to graphical mode  
+10. Set default to boot to graphical mode  
 `systemctl set-default graphical.target`  
 
-Install xfce4
+11. Install xfce4
 
 `pacman -S xfce4`  
 `pacman -S xfce4-goodies` #(extra programs)
 
-Install flatpak  
+12. Install flatpak  
 `pacman -S flatpak`
 
